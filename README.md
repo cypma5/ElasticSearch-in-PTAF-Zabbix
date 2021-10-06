@@ -1,4 +1,4 @@
-# Мониторинг состояния ElasticSearch с помощью Zabbix-Agent
+# Мониторинг состояния ElasticSearch в PTAF с помощью Zabbix-Agent
 1. Устанавливаем Zabbix-Agent
 2. Настраиваем PTAF, открываем порт в Aliases
 3. В папку /etc/zabbix/scripts/ копируем файл es_zabbix.py и две папки elasticsearch,urllib3 с библиотеками Python для работы скрипта.
