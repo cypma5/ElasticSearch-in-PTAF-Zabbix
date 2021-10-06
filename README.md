@@ -11,7 +11,7 @@
 6. В `es_zabbix.py` меняем PASSWORD  в строке `http_auth=('root','PASSWORD')` на содержимое файла `/opt/waf/conf/master_password`
 7. Прописываем в `/etc/zabbix/zabbix.conf` пользовательские диррективы
 ........................Добавлю позже
-8. Устанавливаем Template на Zabbix Server
+8. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
 9. Перезапускам zabbix-agent
 10. Если все сделали правильно в папке /tmp/ появятся данные за последнюю минуту
 
