@@ -2,7 +2,7 @@
 # Инструкция по установке и настройке
 1. Устанавливаем Zabbix-Agent
 2. Настраиваем PTAF, открываем порт в Aliases
-3. В папку `/etc/zabbix/scripts/` копируем файл es_zabbix.py и две папки elasticsearch,urllib3 с библиотеками Python для работы скрипта.
+3. В папку `/etc/zabbix/scripts/` копируем файл `es_zabbix.py` и две папки `elasticsearch` , `urllib3` с библиотеками Python для работы скрипта.
 4. Даём права на скрипт 
 `chmod +x es_zabbix.py`
 5. Проверяем владельца скрипта, при необходимости меняем на 
