@@ -2,7 +2,7 @@
 # Инструкция по установке и настройке
 1. Устанавливаем Zabbix-Agent через af-tools 7-5,Указываем IP сервера zabbix
 
-2. открываем порт в WEB интерфейсе ......
+2. открываем порт в WEB интерфейсе network aliases - WAN - TCP - 10050
 
 3. копируем архив zabbix_ptaf_elasticsearch.zip в /home/pt/
 
@@ -18,7 +18,7 @@
 8. Прописываем в `/etc/zabbix/zabbix.conf` пользовательские диррективы
 
 `cp /etc/zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf.backup`
-`echo "UserParameter=pt_elastic_zabbix[*],/etc/zabbix/scripts/es_zabbix.py $1 $2" >> /etc/zabbix/zabbix_agentd.conf`
+`echo "UserParameter=pt_elastic_zabbix[*],/etc/zabbix/scripts/es_zabbix/es_zabbix.py $1 $2" >> /etc/zabbix/zabbix_agentd.conf`
 
 9. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
 
