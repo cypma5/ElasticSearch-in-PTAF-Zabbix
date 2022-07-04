@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2021-08-20T20:00:15Z</date>
+    <date>2022-07-04T20:50:45Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -444,6 +444,40 @@
                     </preprocessing>
                 </item>
                 <item>
+                    <name>ElasticSearch Store Size</name>
+                    <key>pt_elastic_zabbix[indices,_all:total:store:size_in_bytes]</key>
+                    <delay>60</delay>
+                    <history>7d</history>
+                    <units>bytes</units>
+                    <applications>
+                        <application>
+                            <name>Indices</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&gt;=107374182400</expression>
+                            <name>ElasticSearch Storage Size 100GB</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=128849018880</expression>
+                            <name>ElasticSearch Storage Size 120GB</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=161061273600</expression>
+                            <name>ElasticSearch Storage Size 150GB</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <expression>{last()}&gt;=214748364800</expression>
+                            <name>ElasticSearch Storage Size 200GB</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
                     <name>Warmer rate</name>
                     <key>pt_elastic_zabbix[indices,_all:total:warmer:total]</key>
                     <delay>60</delay>
@@ -466,7 +500,6 @@
                     <name>Index discovery</name>
                     <key>pt_elastic_zabbix[discover,indices]</key>
                     <delay>60</delay>
-                    <status>DISABLED</status>
                     <lifetime>1d</lifetime>
                     <item_prototypes>
                         <item_prototype>
@@ -582,6 +615,24 @@
                             </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
+                            <name>{#NAME} http connections</name>
+                            <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:http:total_opened]</key>
+                            <delay>60</delay>
+                            <history>7d</history>
+                            <status>DISABLED</status>
+                            <applications>
+                                <application>
+                                    <name>Nodes</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
                             <name>{#NAME} docs count</name>
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:indices:docs:count]</key>
                             <delay>60</delay>
@@ -608,6 +659,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:indices:search:fetch_total]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -625,6 +677,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:indices:search:query_total]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -654,6 +707,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:gc:collectors:old:collection_count]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -671,6 +725,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:gc:collectors:young:collection_count]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -688,6 +743,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:mem:heap_max_in_bytes]</key>
                             <delay>3600</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -719,6 +775,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:mem:pools:old:used_in_bytes]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -731,6 +788,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:mem:pools:survivor:used_in_bytes]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -743,6 +801,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:mem:pools:young:used_in_bytes]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -755,6 +814,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:jvm:threads:count]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -766,6 +826,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:bulk:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -783,6 +844,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:bulk:rejected]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -800,6 +862,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:get:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -817,6 +880,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:get:rejected]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -834,6 +898,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:index:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -851,6 +916,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:listener:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -868,6 +934,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:percolate:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -885,6 +952,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:refresh:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -902,6 +970,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:search:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -919,6 +988,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:snapshot:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -936,6 +1006,25 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:suggest:completed]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
+                            <applications>
+                                <application>
+                                    <name>Nodes</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} warmer threads</name>
+                            <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:warmer:completed]</key>
+                            <delay>60</delay>
+                            <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -953,6 +1042,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:transport:rx_count]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -970,6 +1060,7 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:transport:rx_size_in_bytes]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <units>bps</units>
                             <applications>
                                 <application>
@@ -988,69 +1079,38 @@
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:transport:server_open]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
                                 </application>
                             </applications>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#NAME} Outgoing transport traffic</name>
-                            <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:transport:tx_size_in_bytes]</key>
-                            <delay>60</delay>
-                            <history>7d</history>
-                            <units>bps</units>
-                            <applications>
-                                <application>
-                                    <name>Nodes</name>
-                                </application>
-                            </applications>
-                            <preprocessing>
-                                <step>
-                                    <type>CHANGE_PER_SECOND</type>
-                                    <params/>
-                                </step>
-                            </preprocessing>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#NAME} http connections</name>
-                            <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:http:total_opened]</key>
-                            <delay>60</delay>
-                            <history>7d</history>
-                            <applications>
-                                <application>
-                                    <name>Nodes</name>
-                                </application>
-                            </applications>
-                            <preprocessing>
-                                <step>
-                                    <type>CHANGE_PER_SECOND</type>
-                                    <params/>
-                                </step>
-                            </preprocessing>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#NAME} warmer threads</name>
-                            <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:thread_pool:warmer:completed]</key>
-                            <delay>60</delay>
-                            <history>7d</history>
-                            <applications>
-                                <application>
-                                    <name>Nodes</name>
-                                </application>
-                            </applications>
-                            <preprocessing>
-                                <step>
-                                    <type>CHANGE_PER_SECOND</type>
-                                    <params/>
-                                </step>
-                            </preprocessing>
                         </item_prototype>
                         <item_prototype>
                             <name>{#NAME} transport tx per second</name>
                             <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:transport:tx_count]</key>
                             <delay>60</delay>
                             <history>7d</history>
+                            <status>DISABLED</status>
+                            <applications>
+                                <application>
+                                    <name>Nodes</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <params/>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} Outgoing transport traffic</name>
+                            <key>pt_elastic_zabbix[nodes,nodes:{#NODE}:transport:tx_size_in_bytes]</key>
+                            <delay>60</delay>
+                            <history>7d</history>
+                            <status>DISABLED</status>
+                            <units>bps</units>
                             <applications>
                                 <application>
                                     <name>Nodes</name>
@@ -1225,6 +1285,12 @@
                             </graph_items>
                         </graph_prototype>
                     </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>Node discovery</name>
+                    <key>pt_elastic_zabbix[discover,node]</key>
+                    <delay>60</delay>
+                    <lifetime>1d</lifetime>
                 </discovery_rule>
             </discovery_rules>
         </template>
