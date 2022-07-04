@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 # coding=utf-8
 
 from elasticsearch import Elasticsearch
@@ -16,14 +16,14 @@ Zabbix agent script for consuming ElasticSearch metrics
 __author__ = "Adel Sachkov <adel.sachkov@yandex.ru>"
 __date__ = "13 May 2018"
 __version__ = "$Revision: 2.1 $"
-__fork__ = Telegram: KH93b
+__fork__ = "Telegram: KH93b"
 
 
 #нужна переменная
 #es_host = '$(hostname)'
 es_host =  socket.gethostname()
 es_port = 9200
-cache = '/tmp/es_zabbix-{0}.json'
+cache = '/etc/zabbix/scripts/es_zabbix/es_zabbix-{0}.json'
 cache_ttl = 55
 
 
