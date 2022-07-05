@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python
 # coding=utf-8
 
 from elasticsearch import Elasticsearch
@@ -23,14 +23,20 @@ __fork__ = "Telegram: KH93b"
 #es_host = '$(hostname)'
 es_host =  socket.gethostname()
 es_port = 9200
-cache = '/etc/zabbix/scripts/es_zabbix/es_zabbix-{0}.json'
+cache = '/opt/es_zabbix/es_zabbix-{0}.json'
 cache_ttl = 55
 
+f = open('/opt/waf/conf/master_password', 'r')
+for line in f:
+    line = line.rstrip('\n')
+    http_auth=("root",line)
+f.close()
+line = line.rstrip('\n')
 
 
 def es_connect(host, port, timeout=30):
     try:
-        con = Elasticsearch(host=es_host, port=port,http_auth=('root','PASSWORD') , timeout=timeout)
+        con = Elasticsearch(host=es_host, port=port, http_auth=http_auth , timeout=timeout)
 #http_auth нужно брать из файла  /opt/waf/conf/master_password 
 
 

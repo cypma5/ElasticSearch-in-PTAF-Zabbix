@@ -6,26 +6,18 @@
 
 3. копируем архив zabbix_ptaf_elasticsearch.zip в /home/pt/
 
-4.`unzip zabbix_ptaf_elasticsearch.zip -d /etc/zabbix/scripts/`
+4. Распаковываем скрипт в /opt/es_zabbix и конфиг в /etc/zabbix/zabbix_agentd.conf.d/es_zabbix.conf
 
-5. `chown zabbix:zabbix /etc/zabbix/scripts/es_zabbix/*`
-`chmod +x  /etc/zabbix/scripts/es_zabbix/es_zabbix.py`
+`tar -C / -xvf es_zabbix.tar`
 
-6. Настраиваем PTAF, открываем порт в Aliases
+5. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
 
-7. В `es_zabbix.py` меняем PASSWORD  в строке `http_auth=('root','PASSWORD')` на содержимое файла `/opt/waf/conf/master_password`
+6. Перезапускам zabbix-agent
+`systemctl restart zabbix-agent`
 
-8. Прописываем в `/etc/zabbix/zabbix.conf` пользовательские диррективы
+7. Если все сделали правильно в папке /opt/es_zabbix/ появятся данные за последнюю минуту
 
-`cp /etc/zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf.backup`
-`echo "UserParameter=pt_elastic_zabbix[*],/etc/zabbix/scripts/es_zabbix/es_zabbix.py $1 $2" >> /etc/zabbix/zabbix_agentd.conf`
 
-9. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
-
-10. Перезапускам zabbix-agent
-
-11. Если все сделали правильно в папке /tmp/ появятся данные за последнюю минуту
-
-Можно вручную проверить работу скрипта 
+8. Можно вручную проверить работу скрипта 
 Выполнив 
-`/etc/zabbix/scripts/es_zabbix.py health status`
+`sudo -u zabbix /opt/es_zabbix/es_zabbix.py health status`
