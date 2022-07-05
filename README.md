@@ -10,6 +10,9 @@
 
 `tar -C / -xvf es_zabbix.tar`
 
+4.1  Выдаём права
+`chown zabbix:zabbix /opt/es_zabbix/`
+
 5. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
 
 6. Перезапускам zabbix-agent
