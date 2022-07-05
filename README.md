@@ -4,18 +4,20 @@
 
 2. открываем порт в WEB интерфейсе network aliases - WAN - TCP - 10050
 
-3. копируем архив zabbix_ptaf_elasticsearch.zip в /home/pt/
+3. копируем архив `es_zabbix.tar` в `/home/pt/`
 
 4. Распаковываем скрипт в /opt/es_zabbix и конфиг в /etc/zabbix/zabbix_agentd.conf.d/es_zabbix.conf
 
 `tar -C / -xvf es_zabbix.tar`
 
 4.1  Выдаём права
+
 `chown zabbix:zabbix /opt/es_zabbix/`
 
 5. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
 
 6. Перезапускам zabbix-agent
+
 `systemctl restart zabbix-agent`
 
 7. Если все сделали правильно в папке /opt/es_zabbix/ появятся данные за последнюю минуту
@@ -23,4 +25,5 @@
 
 8. Можно вручную проверить работу скрипта 
 Выполнив 
+
 `sudo -u zabbix /opt/es_zabbix/es_zabbix.py health status`
