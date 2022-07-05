@@ -6,9 +6,13 @@
 
 3. копируем архив `es_zabbix.tar` в `/home/pt/`
 
-4. Распаковываем скрипт в /opt/es_zabbix и конфиг в /etc/zabbix/zabbix_agentd.conf.d/es_zabbix.conf
+4. Распаковываем скрипт в /opt/es_zabbix 
 
 `tar -C / -xvf es_zabbix.tar`
+
+5. в конфиг  `/etc/zabbix/zabbix_agentd.conf` добавляем
+
+`UserParameter=pt_elastic_zabbix[*],/opt/es_zabbix/es_zabbix.py $1 $2`
 
 4.1  Выдаём права
 
