@@ -10,7 +10,7 @@ af-tools.py
 `-> 5. zabbix-agent`
 
 2. открываем порт в WEB интерфейсе PTAF `network aliases ->` `<<MGMT или WAN>>` -> `TCP` > `10050`
-<img src="/.images/2024-06-18_07-21-31.png" alt="Описание изображения">
+<img src="/.images/2024-06-18_09-07-48.png" alt="Описание изображения">
 
 
 3. копируем архив `es_zabbix.tar.gz` в `/home/pt/`
