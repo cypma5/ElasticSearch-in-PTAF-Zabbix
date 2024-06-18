@@ -34,11 +34,9 @@ systemctl restart zabbix-agent
 ```
 
 7. Если все сделали правильно в папке /tmp/ появятся данные за последнюю минуту
--rw-rw-r-- 1 zabbix zabbix 2.3K Jun 18 08:17 /tmp/es_zabbix-cluster.json
--rw-rw-r-- 1 zabbix zabbix  338 Jun 18 08:17 /tmp/es_zabbix-health.json
--rw-rw-r-- 1 zabbix zabbix 7.2K Jun 18 08:16 /tmp/es_zabbix-indices.json
--rw-rw-r-- 1 zabbix zabbix 7.1K Jun 18 08:17 /tmp/es_zabbix-nodes.json
-
+```bash
+ls -lah /tmp/es_zabbix-*
+```
 
 8. Можно вручную проверить работу скрипта выполнив 
 
