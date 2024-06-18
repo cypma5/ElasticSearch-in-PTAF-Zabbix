@@ -48,6 +48,7 @@ sudo -u zabbix /etc/zabbix/scripts/es_zabbix/es_zabbix.py health status`
 
 
 Возможные ошибки
-1. в Latest Data zabbix
-Usage: es_zabbix.py [api|discover] key:subkey:subkey
+в Latest Data zabbix
+`Usage: es_zabbix.py [api|discover] key:subkey:subkey`
 проверить что в пункте 5. правильно добавилась строка UserParameter
+и в пункте 7. создались файлы, с содержимым состояния elasticsearch

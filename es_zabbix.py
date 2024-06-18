@@ -23,7 +23,7 @@ __fork__ = "Telegram: @KH93b"
 #es_host = '$(hostname)'
 es_host =  socket.gethostname()
 es_port = 9200
-cache = '/opt/es_zabbix/es_zabbix-{0}.json'
+cache = '/tmp/es_zabbix-{0}.json'
 cache_ttl = 55
 
 f = open('/opt/waf/conf/master_password', 'r')
