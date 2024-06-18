@@ -8,7 +8,7 @@ af-tools.py
 `-> 7. Установка утилит`
 `-> 5. zabbix-agent`
 
-2. открываем порт в WEB интерфейсе PTAF `network aliases -> <<Алиас интерфейса на котрором предполагается открыть порт zabbix-agent MGMT по умолчанию>> -> TCP > 10050`
+2. открываем порт в WEB интерфейсе PTAF `network aliases ->` `<<MGMT или WAN>>` -> `TCP` > `10050`
 
 3. копируем архив `es_zabbix.tar.gz` в `/home/pt/`
 
