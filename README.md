@@ -12,9 +12,13 @@
 tar -C / -xvf es_zabbix.tar
 ```
 
-5. в конфиг  `/etc/zabbix/zabbix_agentd.conf` добавляем
+5. в конфигурационный файл /etc/zabbix/zabbix_agentd.conf добавляем пользовательский параметр
 
-`UserParameter=pt_elastic_zabbix[*],/opt/es_zabbix/es_zabbix.py $1 $2`
+```bash
+echo "#elasticsearch monitoring" >> /etc/zabbix/zabbix_agentd.conf
+echo "UserParameter=pt_elastic_zabbix[*],/opt/es_zabbix/es_zabbix.py $1 $2" >> /etc/zabbix/zabbix_agentd.conf
+```
+
 
 4.1  Выдаём права
 
