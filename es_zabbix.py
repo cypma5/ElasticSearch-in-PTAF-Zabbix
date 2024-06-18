@@ -15,8 +15,8 @@ Zabbix agent script for consuming ElasticSearch metrics
 
 __author__ = "Adel Sachkov <adel.sachkov@yandex.ru>"
 __date__ = "13 May 2018"
-__version__ = "$Revision: 2.1 $"
-__fork__ = "Telegram: KH93b"
+__version__ = "$Revision: 2.2 $"
+__fork__ = "Telegram: @KH93b"
 
 
 #нужна переменная
