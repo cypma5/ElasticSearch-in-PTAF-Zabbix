@@ -2,13 +2,15 @@
 # Инструкция по установке и настройке
 1. Устанавливаем Zabbix-Agent через af-tools 7-5,Указываем IP сервера zabbix
 
-2. открываем порт в WEB интерфейсе network aliases - WAN - TCP - 10050
+2. открываем порт в WEB интерфейсе network aliases -> WAN -> TCP > 10050
 
 3. копируем архив `es_zabbix.tar` в `/home/pt/`
 
 4. Распаковываем скрипт в /opt/es_zabbix 
 
-`tar -C / -xvf es_zabbix.tar`
+```bash
+tar -C / -xvf es_zabbix.tar
+```
 
 5. в конфиг  `/etc/zabbix/zabbix_agentd.conf` добавляем
 
