@@ -1,5 +1,6 @@
-# Мониторинг состояния ElasticSearch в PTAF 3 с помощью Zabbix-Agent
-# Инструкция по установке и настройке
+Этот скрипт на Python позволяет проверять состояние Elasticsearch сервера с использованием Zabbix агента.
+
+# Установка
 
 1. Устанавливаем Zabbix-Agent
 ```bash
@@ -48,7 +49,7 @@ sudo -u zabbix /etc/zabbix/scripts/es_zabbix/es_zabbix.py health status`
 
 
 
-Возможные ошибки
+# Возможные ошибки
 в Latest Data zabbix
 `Usage: es_zabbix.py [api|discover] key:subkey:subkey`
 проверить что в пункте 5. правильно добавилась строка UserParameter
