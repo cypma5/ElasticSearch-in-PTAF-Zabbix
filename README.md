@@ -33,6 +33,10 @@ UserParameter=pt_elastic_zabbix[*],/opt/es_zabbix/es_zabbix.py $1 $2
 systemctl restart zabbix-agent
 ```
 
+# Проверка работы
+<img src="/.images/2024-06-18_08-54-32.png" alt="Описание изображения">
+
+
 7. Если все сделали правильно в папке /tmp/ появятся данные за последнюю минуту
 ```bash
 ls -lah /tmp/es_zabbix-*
