@@ -27,32 +27,33 @@ UserParameter=pt_elastic_zabbix[*],/opt/es_zabbix/es_zabbix.py $1 $2
 
 6. Устанавливаем Template `zbx_export_templates.xml` на Zabbix Server
 
-7. Перезапускам zabbix-agent
+7. Добавляем host с PTAF3 и привязываем к нему Template `Template App PTAF ElasticSearch`
+
+8. Перезапускам zabbix-agent
 
 ```bash
 systemctl restart zabbix-agent
 ```
 
 # Проверка работы
+Пример алерта, который будет появлятся для standalone ноды
 <img src="/.images/2024-06-18_08-54-32.png" alt="Описание изображения">
 
 
-7. Если все сделали правильно в папке /tmp/ появятся данные за последнюю минуту
+
+# Диагностика проблем
+1. Если все сделали правильно в папке /tmp/ появятся данные за последнюю минуту
 ```bash
 ls -lah /tmp/es_zabbix-*
 ```
 
-8. Можно вручную проверить работу скрипта выполнив 
+2. Можно вручную проверить работу скрипта выполнив 
 
 ```bash
 sudo -u zabbix /etc/zabbix/scripts/es_zabbix/es_zabbix.py health status`
 ```
 
-
-
-
-# Возможные ошибки
-в Latest Data zabbix
+3. в Latest Data zabbix
 `Usage: es_zabbix.py [api|discover] key:subkey:subkey`
 проверить что в пункте 5. правильно добавилась строка UserParameter
 и в пункте 7. создались файлы, с содержимым состояния elasticsearch
